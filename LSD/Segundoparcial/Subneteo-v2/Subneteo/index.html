@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subneteo IPv4</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="lateral">
+            <div class="marca">
+                <span class="logo">/24</span>
+                <div>
+                    <strong>Subneteo IPv4</strong>
+                    <small>Leonar Serrano Johan Joshua</small>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <button class="activo" data-ir="binario"><span>01</span> Decimal a binario</button>
+                <button data-ir="flsm"><span>02</span> FLSM</button>
+                <button data-ir="vlsm"><span>03</span> VLSM</button>
+                <button data-ir="ip"><span>04</span> ¿A qué red pertenece?</button>
+            </nav>
+
+            <div class="ejemplos">
+                <p>Ejercicios</p>
+                <button data-ejemplo="escuela">VLSM · 192.168.50.0/24</button>
+                <button data-ejemplo="campus">VLSM · 172.20.0.0/16</button>
+                <button data-ejemplo="dieciseis">FLSM · 10.0.0.0/8 en 16</button>
+            </div>
+        </aside>
+
+        <main class="contenido">
+            <section class="seccion" id="binario">
+                <header>
+                    <h1>Decimal a binario</h1>
+                    <p>Convierte un octeto o una IP completa usando el método de restas.</p>
+                </header>
+                <form id="f-binario" class="formulario">
+                    <label>Número (0-255) o IP
+                        <input id="binario-valor" type="text" value="172.16.45.200" autocomplete="off">
+                    </label>
+                    <button type="submit">Convertir</button>
+                </form>
+                <div id="r-binario"></div>
+            </section>
+
+            <section class="seccion" id="flsm" hidden>
+                <header>
+                    <h1>FLSM</h1>
+                    <p>Divide una red en subredes del mismo tamaño.</p>
+                </header>
+                <form id="f-flsm" class="formulario">
+                    <label>Red base
+                        <input id="flsm-ip" type="text" value="192.168.10.0" autocomplete="off">
+                    </label>
+                    <label>Prefijo o máscara
+                        <input id="flsm-prefijo" type="text" value="/24" autocomplete="off">
+                    </label>
+                    <label>Calcular por
+                        <select id="flsm-modo">
+                            <option value="subredes">Número de subredes</option>
+                            <option value="hosts">Hosts por subred</option>
+                        </select>
+                    </label>
+                    <label>Cantidad
+                        <input id="flsm-cantidad" type="number" min="1" value="4">
+                    </label>
+                    <button type="submit">Calcular</button>
+                </form>
+                <div id="r-flsm"></div>
+            </section>
+
+            <section class="seccion" id="vlsm" hidden>
+                <header>
+                    <h1>VLSM</h1>
+                    <p>Asigna a cada área el bloque más pequeño que le alcanza.</p>
+                </header>
+                <form id="f-vlsm" class="formulario">
+                    <label>Red base
+                        <input id="vlsm-ip" type="text" value="192.168.50.0" autocomplete="off">
+                    </label>
+                    <label>Prefijo o máscara
+                        <input id="vlsm-prefijo" type="text" value="/24" autocomplete="off">
+                    </label>
+                    <div class="lista-areas">
+                        <div class="area titulos"><span>Área</span><span>Hosts</span><span></span></div>
+                        <div id="areas"></div>
+                        <button type="button" id="agregar-area" class="secundario">+ Agregar área</button>
+                    </div>
+                    <button type="submit">Calcular</button>
+                </form>
+                <div id="r-vlsm"></div>
+            </section>
+
+            <section class="seccion" id="ip" hidden>
+                <header>
+                    <h1>¿A qué red pertenece?</h1>
+                    <p>Saca la red, el rango de hosts y el broadcast de cualquier IP.</p>
+                </header>
+                <form id="f-ip" class="formulario">
+                    <label>Dirección IP
+                        <input id="ip-valor" type="text" value="192.168.50.77" autocomplete="off">
+                    </label>
+                    <label>Prefijo o máscara
+                        <input id="ip-prefijo" type="text" value="/27" autocomplete="off">
+                    </label>
+                    <button type="submit">Analizar</button>
+                </form>
+                <div id="r-ip"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./js/calculos.js"></script>
+    <script src="./js/interfaz.js"></script>
+</body>
+</html>

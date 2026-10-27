@@ -1,0 +1,500 @@
+/* estilos.css - Calculadora de subneteo */
+
+:root {
+    --fondo: #f3f4f8;
+    --panel: #ffffff;
+    --lateral: #1b1f3b;
+    --lateral-claro: #2a2f55;
+    --texto: #1f2333;
+    --gris: #6b7085;
+    --linea: #e3e5ee;
+    --principal: #5b5bd6;
+    --principal-claro: #ecebfd;
+    --red: #5b5bd6;
+    --host: #e0861f;
+    --peligro: #c62f3d;
+    --mono: Consolas, "Cascadia Mono", "Courier New", monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+}
+
+/* ---------- Estructura ---------- */
+
+.app {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}
+
+.lateral {
+    background: var(--lateral);
+    color: #e8e9f5;
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 6px;
+}
+
+.logo {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--principal);
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.marca strong {
+    display: block;
+    font-size: 1rem;
+}
+
+.marca small {
+    color: #9da0c2;
+    font-size: 0.8rem;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu button,
+.ejemplos button {
+    font: inherit;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+}
+
+.menu button {
+    background: none;
+    color: #c4c6e0;
+    padding: 11px 12px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.menu button span {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: #7c80a8;
+    margin-right: 8px;
+}
+
+.menu button:hover {
+    background: var(--lateral-claro);
+    color: #ffffff;
+}
+
+.menu button.activo {
+    background: var(--principal);
+    color: #ffffff;
+}
+
+.menu button.activo span {
+    color: #d9d9ff;
+}
+
+.ejemplos {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: auto;
+}
+
+.ejemplos p {
+    margin: 0 0 4px 6px;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #7c80a8;
+}
+
+.ejemplos button {
+    background: var(--lateral-claro);
+    color: #dcdcf2;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-family: var(--mono);
+}
+
+.ejemplos button:hover {
+    background: #383e6e;
+}
+
+.contenido {
+    padding: 40px clamp(16px, 4vw, 48px) 60px;
+    max-width: 1150px;
+    width: 100%;
+}
+
+.seccion header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.seccion header p {
+    margin: 6px 0 24px;
+    color: var(--gris);
+}
+
+/* ---------- Formularios ---------- */
+
+.formulario {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 16px;
+    background: var(--panel);
+    border: 1px solid var(--linea);
+    border-radius: 12px;
+    padding: 22px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gris);
+}
+
+input,
+select {
+    font: inherit;
+    font-weight: 400;
+    color: var(--texto);
+    padding: 9px 12px;
+    border: 1px solid var(--linea);
+    border-radius: 8px;
+    background: #fafbfd;
+    min-width: 170px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--principal);
+    box-shadow: 0 0 0 3px var(--principal-claro);
+}
+
+button[type="submit"],
+.secundario {
+    font: inherit;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background: var(--principal);
+    color: #ffffff;
+    border: 1px solid var(--principal);
+}
+
+button[type="submit"]:hover {
+    filter: brightness(1.1);
+}
+
+.secundario {
+    background: var(--principal-claro);
+    color: var(--principal);
+    border: 1px dashed var(--principal);
+    margin-top: 4px;
+}
+
+.lista-areas {
+    flex-basis: 100%;
+}
+
+.area {
+    display: grid;
+    grid-template-columns: 1fr 130px 36px;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.area input {
+    min-width: 0;
+}
+
+.area.titulos {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gris);
+    margin-bottom: 4px;
+}
+
+.quitar {
+    border: none;
+    background: none;
+    color: var(--peligro);
+    font-size: 1.4rem;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.quitar:hover {
+    background: #fbe9eb;
+}
+
+/* ---------- Resultados ---------- */
+
+.caja {
+    background: var(--panel);
+    border: 1px solid var(--linea);
+    border-radius: 12px;
+    padding: 22px;
+    margin-top: 20px;
+}
+
+.caja h3 {
+    margin: 0 0 16px;
+    font-size: 1.1rem;
+}
+
+.rejilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 0 20px;
+}
+
+.flecha {
+    color: var(--gris);
+}
+
+code {
+    font-family: var(--mono);
+}
+
+.cuadros {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.cuadro {
+    border-left: 3px solid var(--principal);
+    background: #f7f7fc;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+}
+
+.cuadro span {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--gris);
+}
+
+.cuadro strong {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+}
+
+.binarios {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+    overflow-x: auto;
+}
+
+.binarios div {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+}
+
+.etq {
+    width: 90px;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    color: var(--gris);
+}
+
+.binarios code {
+    font-size: 1.02rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.b-red {
+    color: var(--red);
+    font-weight: 700;
+}
+
+.b-host {
+    color: var(--host);
+}
+
+.punto {
+    color: var(--gris);
+}
+
+.nota {
+    font-size: 0.85rem;
+    color: var(--gris);
+    margin: 10px 0 0;
+}
+
+.restas {
+    border-collapse: collapse;
+    font-family: var(--mono);
+    width: 100%;
+}
+
+.restas th,
+.restas td {
+    border: 1px solid var(--linea);
+    padding: 6px;
+    text-align: center;
+}
+
+.restas th {
+    background: #f7f7fc;
+    color: var(--gris);
+    font-weight: 600;
+    text-align: left;
+}
+
+.restas td.uno {
+    background: var(--principal-claro);
+    color: var(--principal);
+    font-weight: 700;
+}
+
+.barra {
+    height: 10px;
+    background: #ececf4;
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.barra div {
+    height: 100%;
+    background: linear-gradient(90deg, var(--principal), #8b7cf6);
+}
+
+.desliza {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+thead th {
+    text-align: left;
+    background: #f7f7fc;
+    color: var(--gris);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 10px 12px;
+    white-space: nowrap;
+}
+
+tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--linea);
+    white-space: nowrap;
+}
+
+tbody tr:hover td {
+    background: #fafaff;
+}
+
+td.mono {
+    font-family: var(--mono);
+}
+
+.aviso {
+    margin-top: 20px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    background: #fbe9eb;
+    color: var(--peligro);
+    border-left: 4px solid var(--peligro);
+}
+
+/* ---------- Celular y tablet ---------- */
+
+@media (max-width: 860px) {
+    .app {
+        grid-template-columns: 1fr;
+    }
+
+    .lateral {
+        position: static;
+        height: auto;
+        gap: 18px;
+        padding: 20px 16px;
+    }
+
+    .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .menu button {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+
+    .ejemplos {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .ejemplos p {
+        flex-basis: 100%;
+    }
+
+    .contenido {
+        padding-top: 28px;
+    }
+
+    label {
+        flex: 1 1 100%;
+    }
+
+    input,
+    select {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .rejilla {
+        grid-template-columns: 1fr;
+    }
+}
