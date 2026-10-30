@@ -1,18 +1,18 @@
 /* estilos.css - Calculadora de subneteo */
 
 :root {
-    --fondo: #f3f4f8;
+    --fondo: #f4f7f5;
     --panel: #ffffff;
-    --lateral: #1b1f3b;
-    --lateral-claro: #2a2f55;
-    --texto: #1f2333;
-    --gris: #6b7085;
-    --linea: #e3e5ee;
-    --principal: #5b5bd6;
-    --principal-claro: #ecebfd;
-    --red: #5b5bd6;
-    --host: #e0861f;
-    --peligro: #c62f3d;
+    --lateral: #132e22;
+    --lateral-claro: #1f4736;
+    --texto: #1c2521;
+    --gris: #5c6662;
+    --linea: #dce3e0;
+    --principal: #128a4a;
+    --principal-claro: #e3f5ea;
+    --red: #1b6ec2;
+    --host: #b8621b;
+    --peligro: #c93b3b;
     --mono: Consolas, "Cascadia Mono", "Courier New", monospace;
 }
 
@@ -27,7 +27,7 @@ body {
     color: var(--texto);
 }
 
-/* ---------- Estructura ---------- */
+
 
 .app {
     display: grid;
@@ -37,7 +37,7 @@ body {
 
 .lateral {
     background: var(--lateral);
-    color: #e8e9f5;
+    color: #e5f2ec;
     padding: 28px 18px;
     display: flex;
     flex-direction: column;
@@ -64,6 +64,7 @@ body {
     font-family: var(--mono);
     font-weight: 700;
     font-size: 0.9rem;
+    color: #ffffff;
 }
 
 .marca strong {
@@ -72,7 +73,7 @@ body {
 }
 
 .marca small {
-    color: #9da0c2;
+    color: #92b8a6;
     font-size: 0.8rem;
 }
 
@@ -92,7 +93,7 @@ body {
 
 .menu button {
     background: none;
-    color: #c4c6e0;
+    color: #c0d9cc;
     padding: 11px 12px;
     border-radius: 8px;
     font-size: 0.95rem;
@@ -101,7 +102,7 @@ body {
 .menu button span {
     font-family: var(--mono);
     font-size: 0.75rem;
-    color: #7c80a8;
+    color: #7fa693;
     margin-right: 8px;
 }
 
@@ -116,7 +117,7 @@ body {
 }
 
 .menu button.activo span {
-    color: #d9d9ff;
+    color: #d1f2e1;
 }
 
 .ejemplos {
@@ -131,12 +132,12 @@ body {
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #7c80a8;
+    color: #7fa693;
 }
 
 .ejemplos button {
     background: var(--lateral-claro);
-    color: #dcdcf2;
+    color: #d9ede3;
     padding: 9px 12px;
     border-radius: 8px;
     font-size: 0.82rem;
@@ -144,7 +145,7 @@ body {
 }
 
 .ejemplos button:hover {
-    background: #383e6e;
+    background: #2b614b;
 }
 
 .contenido {
@@ -163,7 +164,7 @@ body {
     color: var(--gris);
 }
 
-/* ---------- Formularios ---------- */
+
 
 .formulario {
     display: flex;
@@ -193,7 +194,7 @@ select {
     padding: 9px 12px;
     border: 1px solid var(--linea);
     border-radius: 8px;
-    background: #fafbfd;
+    background: #fafcfb;
     min-width: 170px;
 }
 
@@ -230,6 +231,10 @@ button[type="submit"]:hover {
     margin-top: 4px;
 }
 
+.secundario:hover {
+    background: #d4f0df;
+}
+
 .lista-areas {
     flex-basis: 100%;
 }
@@ -262,10 +267,9 @@ button[type="submit"]:hover {
 }
 
 .quitar:hover {
-    background: #fbe9eb;
+    background: #fce8e8;
 }
 
-/* ---------- Resultados ---------- */
 
 .caja {
     background: var(--panel);
@@ -303,7 +307,7 @@ code {
 
 .cuadro {
     border-left: 3px solid var(--principal);
-    background: #f7f7fc;
+    background: #f3f8f5;
     border-radius: 0 8px 8px 0;
     padding: 10px 14px;
 }
@@ -379,7 +383,7 @@ code {
 }
 
 .restas th {
-    background: #f7f7fc;
+    background: #f3f8f5;
     color: var(--gris);
     font-weight: 600;
     text-align: left;
@@ -393,14 +397,14 @@ code {
 
 .barra {
     height: 10px;
-    background: #ececf4;
+    background: #e1ede6;
     border-radius: 99px;
     overflow: hidden;
 }
 
 .barra div {
     height: 100%;
-    background: linear-gradient(90deg, var(--principal), #8b7cf6);
+    background: linear-gradient(90deg, var(--principal), #23b56a);
 }
 
 .desliza {
@@ -415,7 +419,7 @@ table {
 
 thead th {
     text-align: left;
-    background: #f7f7fc;
+    background: #f3f8f5;
     color: var(--gris);
     font-size: 0.78rem;
     text-transform: uppercase;
@@ -431,7 +435,7 @@ tbody td {
 }
 
 tbody tr:hover td {
-    background: #fafaff;
+    background: #f7faf8;
 }
 
 td.mono {
@@ -442,12 +446,11 @@ td.mono {
     margin-top: 20px;
     padding: 14px 18px;
     border-radius: 10px;
-    background: #fbe9eb;
+    background: #fce8e8;
     color: var(--peligro);
     border-left: 4px solid var(--peligro);
 }
 
-/* ---------- Celular y tablet ---------- */
 
 @media (max-width: 860px) {
     .app {
